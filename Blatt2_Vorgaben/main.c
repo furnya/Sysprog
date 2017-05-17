@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <time.h>
+#include <math.h>
 
 #include "main.h"
 #include "utils.h"
@@ -41,15 +42,19 @@ int main(int argc, char* argv[])
     strncpy(targetHash, argv[1],strlen(argv[1])+1);
 
     char** work = (char**) malloc(sizeof(char*) * (process_count+1));
-    split_work(work, strlen(charset)/process_count);
-
+    if(strlen(charset)/process_count>0){
+      split_work(work, strlen(charset)/process_count);
+    }else{
+      split_work(work, strlen(charset));
+    }
     pid_t pid1 = 0;
     int i = 0;
     char* result = (char*) malloc(sizeof(char) * (max_password_length+1));
     time_t t1 = time(NULL);
+    int processes = strlen(charset)<process_count ? strlen(charset) : process_count;
     // printf("t1 = %f\n",(double) t1);
     while(i>=0){
-        if(i<process_count){
+        if(i<processes){
             pid1 = fork();
             // printf("i=%d | %u\n",i,pid1);
         }else{
