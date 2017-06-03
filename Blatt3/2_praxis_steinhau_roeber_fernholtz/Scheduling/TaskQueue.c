@@ -55,3 +55,26 @@ void printQueue(Queue* queue){
 	}
 	printf("\n");
 }
+
+bool isEmpty(Queue* queue){
+	if(queue->head==NULL){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+void freeQueue(Queue* queue){
+	if(queue->size==0){
+		free(queue);
+		return;
+	}
+	Q_Elem* temp = queue->head;
+	Q_Elem* temp2 = temp;
+	while(temp != NULL){
+		temp2 = temp;
+		temp = temp->previous;
+		free(temp2);
+	}
+	free(queue);
+}

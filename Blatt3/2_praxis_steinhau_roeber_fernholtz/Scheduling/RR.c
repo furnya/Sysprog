@@ -38,6 +38,8 @@ void schedule_RR(const TaskPool *task_pool, uint16_t quantum_max) {
     	}
     }
 
+    freeQueue(queue);
+
     if(allDone(task_pool)){
         printf("All done\n");
     }else{

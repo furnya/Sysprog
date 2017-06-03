@@ -51,6 +51,8 @@ void schedule_SJN(const TaskPool *task_pool) {
     	execTask(current,1);
     }
 
+    free(array);
+
     if(allDone(task_pool)){
         printf("All done\n");
     }else{

@@ -1,6 +1,6 @@
 {
     "RR_MAX_QUANTUM": 2,
-    "MLF_NUM_QUEUES": 1,
+    "MLF_NUM_QUEUES": 3,
 
     "task_pool": [
         {

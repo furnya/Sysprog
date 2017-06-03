@@ -35,6 +35,8 @@ void schedule_FCFS(const TaskPool *task_pool) {
     	tick++;
     }
 
+    freeQueue(queue);
+
     if(allDone(task_pool)){
         printf("All done\n");
     }else{

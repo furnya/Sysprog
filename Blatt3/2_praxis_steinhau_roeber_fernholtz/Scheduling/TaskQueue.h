@@ -22,3 +22,7 @@ Task* dequeue(Queue* queue);
 Task* getHead(Queue* queue);
 
 void printQueue(Queue* queue);
+
+bool isEmpty(Queue* queue);
+
+void freeQueue(Queue* queue);
