@@ -36,11 +36,11 @@ void schedule_MLF(const TaskPool *task_pool, uint16_t num_levels) {
     		perror("Malloc Error");
     		exit(1);
     	}
+        queueArray[i]->size = 0;
     }
 
     int ticks_executed = 0;
-    int currentQueue;
-    bool working = true;
+    int currentQueue = 0;
     Task* arrived;
     Task* current = NULL;
     for(int tick=0;tick<task_pool->total_duration;tick++){

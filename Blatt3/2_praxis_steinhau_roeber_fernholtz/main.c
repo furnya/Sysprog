@@ -33,13 +33,13 @@ int main(int argc, char *argv[]) {
     printf("FCFS:   ");
     schedule(task_pool, FCFS, 0);
 
-    // allReset(task_pool);
-    // printf("SJN:    ");
-    // schedule(task_pool, SJN, 0);
+    allReset(task_pool);
+    printf("SJN:    ");
+    schedule(task_pool, SJN, 0);
 
-    // allReset(task_pool);
-    // printf("RR:     ");
-    // schedule(task_pool, RR, RR_args);
+    allReset(task_pool);
+    printf("RR:     ");
+    schedule(task_pool, RR, RR_args);
 
     allReset(task_pool);
     printf("MLF:    ");
