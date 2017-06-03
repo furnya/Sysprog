@@ -21,7 +21,11 @@ void schedule_Monkey(const TaskPool *task_pool) {
 
         //NOTE: This is where you COULD increase a variable, holding the current tick...
     }
-    printf("\n");
-
+    if(allDone(task_pool)){
+        printf("All done\n");
+    }else{
+        printf("Not all done\n");
+        exit(1);
+    }
     return;
 }

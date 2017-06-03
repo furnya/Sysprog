@@ -1,5 +1,6 @@
 #include "Scheduling/Scheduling.h"
 #include <stdlib.h>
+#include <signal.h>
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -28,7 +29,7 @@ int main(int argc, char *argv[]) {
     //printf("Monkey: ");
     //schedule(task_pool, MONKEY, 0);
 
-    allReset(task_pool);
+    //allReset(task_pool);
     printf("FCFS:   ");
     schedule(task_pool, FCFS, 0);
 
@@ -40,9 +41,9 @@ int main(int argc, char *argv[]) {
     printf("RR:     ");
     schedule(task_pool, RR, RR_args);
 
-    allReset(task_pool);
-    printf("MLF:    ");
-    schedule(task_pool, MLF, MLF_args);
+    // allReset(task_pool);
+    // printf("MLF:    ");
+    // schedule(task_pool, MLF, MLF_args);
 
     freeTaskPool(task_pool);
 

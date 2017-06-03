@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <signal.h>
 
 #define SIGNAL_EXEC_ONE_TICK    SIGUSR1
 #define SIGNAL_ACKNOWLEDGE      SIGUSR2
