@@ -4,8 +4,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+*	Simple Queue, deren Elemente Task-Pointer speichern
+*	Methoden: 
+*		enqueue (neuen Task einreihen)
+*		dequeue (Task vom Kopf der Queue ausgeben und löschen)
+*		getHead (Task vom Kopf der Queue ausgeben)
+*		printQueue (nicht verwendet, nur zum Debuggen gedacht)
+*		isEmpty (testes auf leere Queue)
+*		freeQueue (Queue löschen und Speicher freigeben)
+*/
+
+
 void enqueue(Queue* queue, Task* task){
-	//printf("enqueue | arrival_tick = %d\n",task->arrival_tick);
+	if(task==NULL){
+		return;
+	}
 	Q_Elem* new_elem = (Q_Elem*) malloc(sizeof(Q_Elem));
 	if(new_elem==NULL){
 		perror("Malloc Error");

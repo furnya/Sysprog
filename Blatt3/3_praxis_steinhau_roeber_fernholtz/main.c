@@ -25,25 +25,24 @@ int main(int argc, char *argv[]) {
     }
     printf("\n");
 
-    //NOTE: You can uncomment this line, to see what the ouput should look like.
-    //printf("Monkey: ");
-    //schedule(task_pool, MONKEY, 0);
-
-    //allReset(task_pool);
     printf("FCFS:   ");
     schedule(task_pool, FCFS, 0);
+    printf("\n");
 
     allReset(task_pool);
     printf("SJN:    ");
     schedule(task_pool, SJN, 0);
+    printf("\n");
 
     allReset(task_pool);
     printf("RR:     ");
     schedule(task_pool, RR, RR_args);
+    printf("\n");
 
     allReset(task_pool);
     printf("MLF:    ");
     schedule(task_pool, MLF, MLF_args);
+    printf("\n");
 
     freeTaskPool(task_pool);
 
