@@ -81,6 +81,13 @@ field* make_field(int num_threads){
 
 	//TODO: initialize field and it's members listed in field.h
 	//TODO: initialize mutex and other variables for synchronization of threads
+	g_field = (field*) emalloc(sizeof(field));
+	g_field -> num_threads = NUM_THREADS;
+	g_field -> mtx = population_from_file(&(g_field->height),&(g_field->width));
+	g_field -> generation = 0;
+	pthread_mutex_init(&g_field->threads_done_mutex, NULL);
+	pthread_cond_init(&g_field->threads_done_cond, NULL);
+	g_field -> threads_done = 0;
 
 	// initialize mutex and signal/wait object arrays
 	g_field -> upper_row_mutex = (pthread_mutex_t*) emalloc(num_threads * sizeof(pthread_mutex_t));
