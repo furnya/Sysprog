@@ -1,0 +1,48 @@
+Global:
+logging = fopen("log.txt","a");
+char buffer[256];
+
+struct Signal_object {
+	boolean s = false;
+	process *wp = NULL;
+}
+
+void signal(Signal_object *so) {
+	so->s = true;
+	if (so->wp != NULL)
+		deblock(so->wp);
+}
+
+void wait(Signal_object *so){
+	if(so->s == false)
+		block(so->wp);
+}
+
+struct Signal_object* s1 = (struct Signal_object*) malloc (sizeof(struct Signal_object));
+s1->wp = thread2;
+struct Signal_object* s2 = (struct Signal_object*) malloc (sizeof(struct Signal_object));
+s2->wp = thread1;
+
+Funktion1:
+while(1){
+	while(s2->s==false){
+		wait(s2);
+	}
+	s2->s = false;
+	getEKG(&buffer);
+	fprintf(logging, "%s", &buffer);
+	signal(s1);
+	sleep(10);
+}
+
+Funktion2:
+while(1){
+	while(s1->s==false){
+		wait(s1);
+	}
+	s1->s = false;
+	getAktivitaet(&buffer);
+	fprintf(logging, "%s", &buffer);
+	signal(s2);
+	sleep(10);
+}

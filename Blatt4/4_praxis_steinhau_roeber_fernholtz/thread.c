@@ -33,8 +33,9 @@ void* thread(void* t_args){
 		calculate_shark_generation((void*)args); 
 		calculate_fish_generation((void*) args);
 
-
-		//TODO: make sure all threads finished updating their areas before proceeding
+		//threads_done zählt von 0 bis NUM_THREADS hoch
+		//somit werden alle prozesse (angefangen beim prozess mit ID 0) nach und nach "vorbeigelassen" erhöhen dabei threads_done
+		//sodass der prozess mit der nächsthöheren ID "vorbeigelassen" wird
 		pthread_mutex_lock(&field->threads_done_mutex);
 		while(args->id > field->threads_done){
 			pthread_cond_wait(&field->threads_done_cond,&field->threads_done_mutex);
@@ -42,13 +43,14 @@ void* thread(void* t_args){
 		field->threads_done++;
 		pthread_cond_broadcast(&field->threads_done_cond);
 		pthread_mutex_unlock(&field->threads_done_mutex);
+
+		//nur der letzte Prozess resettet threads_done und erhöht die generation (damit dies nicht mehrfach geschieht) 
 		if(args->id == NUM_THREADS-1){
 			field->threads_done = 0;
 			field -> generation++;
 		}else{
 			continue;
 		}
-		//TODO: increase generation number of field struct
 
 		// signalize printer to print new generation
 		pthread_mutex_lock(&field -> field_printed_mutex);

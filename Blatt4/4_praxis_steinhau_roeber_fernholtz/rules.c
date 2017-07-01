@@ -45,16 +45,15 @@ void lock(thread_args* args, int h){
 	pthread_mutex_t* mutex;
 	pthread_cond_t* cond;
 	bool* row_beeing_read;
-	//TODO: call to_lock() to find out if a row needs to be locked at the height h
-	//TODO: check if other thread already locked the row and wait if necessary
-	//TODO: lock the row
+
 	to_lock(args,h,&mutex,&cond,&row_beeing_read);
 	if(mutex!=NULL){
+		pthread_mutex_lock(mutex);
 		while(!row_beeing_read){
 			pthread_cond_wait(cond,mutex);
 		}
 		*row_beeing_read = false;
-		pthread_mutex_lock(mutex);
+		pthread_mutex_unlock(mutex);
 	}
 }
 
@@ -68,8 +67,9 @@ void unlock(thread_args* args, int h){
 	//TODO: send signal and unlock the row
 	to_lock(args,h,&mutex,&cond,&row_beeing_read);
 	if(mutex!=NULL){
+		pthread_mutex_lock(mutex);
 		*row_beeing_read = true;
-		pthread_cond_signal(cond);
+		pthread_cond_broadcast(cond);
 		pthread_mutex_unlock(mutex);
 	}
 }

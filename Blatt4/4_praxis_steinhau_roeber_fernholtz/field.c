@@ -79,8 +79,6 @@ animal** population_from_file(int* height, int* width){
 field* make_field(int num_threads){
 	field* g_field;
 
-	//TODO: initialize field and it's members listed in field.h
-	//TODO: initialize mutex and other variables for synchronization of threads
 	g_field = (field*) emalloc(sizeof(field));
 	g_field -> num_threads = NUM_THREADS;
 	g_field -> mtx = population_from_file(&(g_field->height),&(g_field->width));
