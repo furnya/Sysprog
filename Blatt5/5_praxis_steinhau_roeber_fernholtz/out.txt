@@ -1,35 +1,34 @@
 Prozesse:  2 / Betriebsmittel:  3
 
 Gesamtanforderungen:
- 1  1  1
- 3  3  0
+ 1  1  1 
+ 3  3  0 
 
 Belegungen:
- 1  0  0
- 1  0  0
+ 1  0  0 
+ 1  0  0 
 
-verfügbar:  3  3  3
+verfügbar:  3  3  3 
 
 Restanforderungen:
- 0  1  1
- 2  3  0
+ 0  1  1 
+ 2  3  0 
 
-frei:  1  3  3
+frei:  1  3  3 
 
 SICHER
 Operation: A 1 0 1
 
 Restanforderungen:
- 0  1  1
- 1  3  0
+ 0  1  1 
+ 1  3  0 
 
-f:  0  3  3
+frei:  0  3  3 
 
 Operation: R 0 0 1
 
 Restanforderungen:
- 0  1  1
- 1  3  0
+ 0  1  1 
+ 1  3  0 
 
-f:  1  3  3
-
+frei:  1  3  3 
