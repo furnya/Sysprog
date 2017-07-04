@@ -1,0 +1,11 @@
+Falls Sie die Startpopulation anpassen wollen,
+beachten Sie folgende Hinweise:
+
+-in der ersten Zeile sind Höhe und Breite des nachfolgenden 
+	Feldes durch ein Leerzeichen separiert angegeben.
+
+-direkt darunter (Zeilenumbruch) folgt die Darstellung des Feldes wie folgt:
+
+2 für Wasser,
+1 für Haie
+und 0 für Fische
